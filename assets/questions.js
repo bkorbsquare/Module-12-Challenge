@@ -58,7 +58,6 @@ module.exports = {
             type: "confirm",
             name: "is_manager",
             message: "Is this employee a manager?",
-            default: false
         }
 
     ],
@@ -135,8 +134,6 @@ module.exports = {
             type: "confirm",
             name: "is_manager",
             message: "Is this employee a manager?",
-            default: false
-
         }
 
     ],

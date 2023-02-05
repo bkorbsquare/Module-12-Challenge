@@ -77,3 +77,19 @@ View employees by manager.
 View employees by department.
 Delete departments, roles, and employees.
 View the total utilized budget of a department—in other words, the combined salaries of all employees in that department.
+
+# TODO
+
+1. install inquirer
+2. make a .env file, with mysql credentials etc
+3. create database/tables in mysql
+
+# Outline
+
+1. inquirer presents options:
+    View all departments, view all roles, view all employees. (sql query, display results on console)
+    Add a department, add a role, add an employee. (get related user input, construct the sql to create record, display success/not)
+    Update an employee role. (Find the employee via user input, select from available roles, construct the sql to update record, display success/not)
+
+*Database connection method
+*Function to execute sql queries

@@ -7,7 +7,7 @@ class ORM {
 
     viewAllEmployee() {
 
-        const queryString = `SELECT employee.id, first_name, last_name, department.name, role.title, salary, is_manager
+        const queryString = `SELECT employee.id, first_name, last_name, department.name, role.title, salary, manager_id
         FROM employee 
         INNER JOIN role on employee.role_id = role.id 
         INNER JOIN department on role.department_id = department.id;`
@@ -20,7 +20,7 @@ class ORM {
     };
 
     viewAllRoles() {
-        const queryString = ` SELECT title, salary, department.name
+        const queryString = `SELECT title, salary, department.name
         FROM role
         INNER JOIN department ON role.department_id = department.id;`
         return this.connection.query(queryString);
@@ -40,11 +40,12 @@ class ORM {
         const queryString = "SELECT first_name, last_name FROM employee WHERE manager_id = ?"
         return this.connection.query(queryString, [managerId]);
     }
+    
 
-    addEmployee(first_name, last_name, role_id, manager_id, is_manager) {
-        const queryString = `INSERT INTO employee (first_name, last_name, role_id, manager_id, is_manager) VALUE (?, ?, ?, ?, ?);`
+    addEmployee(first_name, last_name, role_id, manager_id) {
+        const queryString = `INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUE (?, ?, ?, ?);`
 
-        return this.connection.query(queryString, [first_name, last_name, role_id, manager_id, is_manager]);
+        return this.connection.query(queryString, [first_name, last_name, role_id, manager_id]);
     };
 
 

@@ -3,7 +3,6 @@ const orm = require("./config/orm");
 const inquirer = require("inquirer");
 const questions = require("./assets/questions");
 
-// starts the program
 const init = () => {
 
     return inquirer.prompt(questions.main)
@@ -57,7 +56,6 @@ const init = () => {
         .catch(err => console.error(err));
 };
 
-// renders all employees to the console
 const renderAllEmployees = () => {
     return orm.viewAllEmployee()
         .then(result => console.table(result))
@@ -65,7 +63,6 @@ const renderAllEmployees = () => {
         .then(init);
 };
 
-// renders all departments to the console
 const renderAllDepartments = () => {
     return orm.viewAllDepartments()
         .then(result => console.table(result))
@@ -73,7 +70,6 @@ const renderAllDepartments = () => {
         .then(init);
 };
 
-// renders all roles to the console
 const renderAllRoles = () => {
     return orm.viewAllRoles()
         .then(result => console.table(result))
@@ -81,7 +77,6 @@ const renderAllRoles = () => {
         .then(init);
 };
 
-// renders all managers
 const renderAllManagers = () => {
     return orm.viewManagers()
         .then(result => console.table(result))
@@ -100,9 +95,8 @@ const renderEmployeesByManger = async () => {
     } catch (error) {
         console.error(error);
     }
-}
+};
 
-// renders total utilized budget
 const renderTUB = async () => {
     try {
         const dept = await orm.viewDepartmentINQ();
@@ -117,7 +111,6 @@ const renderTUB = async () => {
 };
 
 
-// asks the add employee prompts to insert a new employee into the database
 const addEmployee = async () => {
     try {
         const managers = await orm.viewManagersINQ();
@@ -131,7 +124,6 @@ const addEmployee = async () => {
     }
 };
 
-// allows the user to add a department
 const addDepartment = async () => {
     try {
         const result = await inquirer.prompt(questions.addDepartment);
@@ -143,7 +135,6 @@ const addDepartment = async () => {
     };
 };
 
-// allows the user to add a role
 const addRole = async () => {
     try {
         const dept = await orm.viewDepartmentINQ();
